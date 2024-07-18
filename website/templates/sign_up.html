@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<div class="signup-container"> <!-- Apply signup-container class -->
+  <div class="signup-box" style="margin-top: 10px;"> <!-- Adjust margin-top -->
+    <h3 align="center" style="color: #B22222;">Sign Up</h3> <!-- Deep red color -->
+    <form method="POST">
+      <div class="form-group">
+        <label for="email" style="color: #B22222;">Email Address</label> <!-- Deep red color -->
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email"
+        >
+      </div>
+      <div class="form-group">
+        <label for="firstName" style="color: #B22222;">First Name</label> <!-- Deep red color -->
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="Enter first name"
+        >
+      </div>
+      <div class="form-group">
+        <label for="password1" style="color: #B22222;">Password</label> <!-- Deep red color -->
+        <input
+          type="password"
+          class="form-control"
+          id="password1"
+          name="password1"
+          placeholder="Enter password"
+        >
+      </div>
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label for="password2" style="color: #B22222;">Password (Confirm)</label> <!-- Deep red color -->
+        <input
+          type="password"
+          class="form-control"
+          id="password2"
+          name="password2"
+          placeholder="Confirm password"
+        >
+      </div>
+      <button type="submit" class="btn btn-primary" style="background-color: #B22222; border-color: #B22222; color: white; width: 100%;">Submit</button> <!-- Deep red color -->
+    </form>
+  </div>
+</div>
+
+<style>
+  body {
+    background-image: url('{{ url_for('static', filename='background.png') }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .signup-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px; /* Adjust margin-top to move the signup box up */
+    margin-bottom: 50px; /* Add margin-bottom to create space below the signup box */
+  }
+
+  .signup-box {
+    padding: 15px; /* Increase padding for the signup box */
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 50%; /* Start from the middle of the page */
+    width: 80%; /* Full width */
+    height: 50%; /* Half of the height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #B22222 !important; /* Deep red color */
+  }
+
+  .modal-content {
+    background-color: #B22222 !important; /* Deep red color */
+    color: white !important; /* Set text color to white */
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #B22222; /* Deep red color */
+    width: 80%;
+  }
+
+  /* Position the modal close button */
+  .close {
+    color: white !important; /* Set close button color to white */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black !important; /* Set close button hover color to black */
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
