@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&display=swap">
+    <link rel="stylesheet" href="back.css">
+
+    <style>
+        /* Additional styles for card group */
+        .card-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-family: "Crimson Pro", Arial, Helvetica, sans-serif;
+        }
+
+        .card {
+            width: calc(33.333% - 15px); /* Adjust the width of cards for three cards in a row with spacing */
+            margin-bottom: 15px;
+            background-color: white;
+            color: black;
+            padding: 35px;
+            font-family: "Crimson Pro", Arial, Helvetica, sans-serif;
+            font-size: 1.1rem;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+
+        .card-title {
+            font-size: 1.3rem; /* Increase font size for card title */
+        }
+
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 15px); /* Adjust the width of cards for two cards in a row with spacing on smaller screens */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                width: 100%; /* Make cards full width on extra small screens */
+            }
+        }
+
+        .card:not(:last-child) {
+            margin-right: 20px; /* Add spacing between each card */
+        }
+
+        .card-link {
+            color: #B22222; /* Red color for "Show more" links */
+        }
+
+        .card-link:hover {
+            color: #ff6347; /* Lighter red color for hover */
+        }
+
+        /* Background image */
+        body {
+            background-image: url({{ url_for('static', filename='back.png') }});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0; /* Remove default margin */
+            padding-left: 250px; /* Adjust for the width of the navbar */
+        }
+
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh; /* Cover the entire height of the screen */
+            width: 250px; /* Adjust as needed */
+            z-index: 1000; /* Ensure the navbar is above other content */
+            background-color: black;
+            padding-top: 15px; /* Optional: Add padding at the top */
+        }
+
+        .navbar-brand {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .navbar-brand img {
+            height: 110px;
+        }
+
+        .navbar-items {
+            margin-top: 80px; /* Adjust as needed to ensure navbar items are below the logo */
+            text-align: center;
+            width: 100%;
+        }
+
+        .navbar-nav {
+            width: 100%; /* Ensure the navbar items fill the available space */
+        }
+
+        .nav-link {
+            color: white !important;
+            font-family: 'Crimson Pro', Arial, Helvetica, sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px; /* Add space between each navbar item */
+        }
+
+        .nav-link:hover {
+            color: #B22222 !important; /* Change color on hover */
+        }
+
+        .form-control {
+            width: 100%; /* Make the search input full width */
+            margin-bottom: 10px; /* Add space between the search bar and navigation items */
+        }
+
+        .btn-outline-success {
+            color: white;
+            background-color: #B22222;
+            border-color: #B22222;
+            font-family: 'Crimson Pro', Arial, Helvetica, sans-serif;
+            font-size: 1.4rem;
+            width: 100%; /* Make the search button full width */
+        }
+
+        .btn-outline-success:hover {
+            background-color: white;
+            color: #B22222;
+        }
+
+        /* Adjust content padding to avoid overlapping with navbar */
+        .main {
+            padding-left: 270px; /* Adjust as needed */
+            padding-top: 80px; /* Adjust to align content below navbar */
+        }
+    </style>
+
+    <script>
+        function handleSearch(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const searchInput = document.querySelector('.form-control').value.toLowerCase();
+            console.log("Search input:", searchInput); // Debugging line to check search input
+            let redirectUrl = '';
+
+            switch (searchInput) {
+                case 'laptops':
+                case 'laptop':
+                    redirectUrl = 'Laptops.html';
+                    break;
+                case 'headphones':
+                case 'headphone':
+                    redirectUrl = 'headphone.html';
+                    break;
+                case 'phones':
+                case 'phone':
+                    redirectUrl = 'phones.html';
+                    break;
+                case 'watches':
+                case 'watch':
+                    redirectUrl = 'watches.html';
+                    break;
+                case 'power bank':
+                case 'power banks':
+                    redirectUrl = 'powerBank.html';
+                    break;
+                case 'phone charger':
+                case 'phone chargers':
+                case 'charger':
+                case 'chargers':
+                    redirectUrl = 'phoneCharger.html';
+                    break;
+                default:
+                    alert('No matching category found!');
+                    return;
+            }
+
+            console.log("Redirecting to:", redirectUrl); // Debugging line to check redirect URL
+            window.location.href = redirectUrl;
+        }
+    </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <img src="{{ url_for('static', filename='logo-png.png') }}" alt="Logo">
+        </div>
+        <div class="navbar-items">
+            <form class="search-bar" onsubmit="handleSearch(event)">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav flex-column mt-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="submit1.html">Sell your Item</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/About Us">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Contact Us">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="main">  
+        <div class="card-group">
+          <div class="card">
+            <img src="{{ url_for('static', filename='laptop.jpg') }}" class="laptop">
+            <div class="card-body">
+              <h5 class="card-title">LAPTOP</h5>
+              <p class="card-text">You can find different brand <u>laptops</u> and start bidding just by clicking <a href="Laptops.html" class="card-link">Show more</a></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="{{ url_for('static', filename='headp.jpg') }}" class="laptop">
+            <div class="card-body">
+              <h5 class="card-title">HEAD PHONES</h5>
+              <p class="card-text">You can find different brand <u>headphones</u> and start bidding just by clicking <a href="headphone.html" class="card-link">Show more</a></p>
+            </div>
+          </div>
+            <div class="card">
+              <img src="{{ url_for('static', filename='phone.jpg') }}" class="laptop">
+              <div class="card-body">
+                <h5 class="card-title">PHONES</h5>
+                <p class="card-text">You can find different brand <u>phones</u> and start bidding just by clicking <a href="phones.html" class="card-link">Show more</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-group">
+            <div class="card">
+              <img src="{{ url_for('static', filename='watch.jpg') }}" class="laptop">
+              <div class="card-body">
+                <h5 class="card-title">WATCHES</h5>
+                <p class="card-text">You can find different brand <u>watches</u> and start bidding just by clicking <a href="watches.html" class="card-link">Show more</a></p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="{{ url_for('static', filename='power.jpg') }}" class="laptop">
+              <div class="card-body">
+                <h5 class="card-title">POWER BANK</h5>
+                <p class="card-text">You can find different brand <u>Power bank</u> and start bidding just by clicking <a href="powerBank.html" class="card-link">Show more</a></p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="{{ url_for('static', filename='charger.jpg') }}" class="laptop">
+              <div class="card-body">
+                <h5 class="card-title">PHONE CHARGER</h5>
+                <p class="card-text">You can find different brand <u>phone chargers</u> and start bidding just by clicking <a href="phoneCharger.html" class="card-link">Show more</a></p>
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>

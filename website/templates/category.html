@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category_name.capitalize() }} Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .product img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ category_name.capitalize() }} Products</h1>
+    {% if items %}
+        {% for item in items %}
+            <div class="product">
+                {% if item.image %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ item.image) }}" alt="{{ item.name }}">
+                {% endif %}
+                <h2>{{ item.name }}</h2>
+                <p><strong>Number:</strong> {{ item.number }}</p>
+                <p><strong>MRP:</strong> {{ item.mrp }}</p>
+                <p><strong>Description:</strong> {{ item.description }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No products found in this category.</p>
+    {% endif %}
+</body>
+</html>
