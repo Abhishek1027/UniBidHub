@@ -1,5 +1,9 @@
 # Online-Auction
 <img width="948" alt="image" src="https://github.com/user-attachments/assets/6cb90730-417b-4d59-9e42-4a9299bda1c8" />
+<img width="949" alt="image" src="https://github.com/user-attachments/assets/82f74d47-c338-4da2-9ed7-d6a610268fb7" />
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/60a5d240-70a8-42f5-9f56-a07e8bc93efd" />
+
+
 UniBidHub is an online auction platform where users can bid on various products or services. It provides a seamless bidding experience with real-time bid updates, secure user authentication, and a transparent bidding process. The platform allows users to create bids, participate in auctions, and monitor ongoing bid statuses.
 
 ## Features
